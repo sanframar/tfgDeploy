@@ -1,0 +1,30 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang ="es">
+<link rel="stylesheet" href="{% static 'predicterapp/body.css' %}">
+
+<div class="basic">
+{% include "predicterapp/header.html" %}    
+</div>
+
+<div class="formularioResultado">
+<div>
+	<a>Ventana usada: {{ventana}}</a></br>
+	<a>Dias predecidos: {{diasAPredecir}}</a></br>
+	<a>Dato seleccionado: {{select}}</a>
+</div>
+
+<div>
+	{% for item1, item2, item3 in myList %}
+    	<a>El resultado obtenido para el dia {{ forloop.counter }}: {{item3}} con score: {{item1}} y mae: {{item2}}</a></br>
+    </tr>
+	{% endfor %}
+</div>
+</div>
+
+
+<div class="divfooter">
+{% include "predicterapp/footer.html" %}
+</div>
+</html>

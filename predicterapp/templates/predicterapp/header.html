@@ -1,0 +1,17 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang ="es">
+<link rel="stylesheet" href="{% static 'predicterapp/style.css' %}">
+
+<ul id="jMenu" class="ulheader">
+  <li class="liheader"><a class="aheader" href="{% url 'index' %}">Predicter</a></li>
+  <li class="liheader"><a class="aheader" href="{% url 'datos' %}">Datos almacenados</a></li>
+  <li class="liheader"><a class="aheader" href="{% url 'preProcesamiento' %}">Pre-Procesamiento</a></li>
+  <li class="liheader"><a class="aheader" href="{% url 'regresion' %}">Regresion</a></li>
+  <li class="liheader"><a class="aheader" href="{% url 'clasificacion' %}">Clasificacion</a></li>
+  <li class="liheader"><a class="aheader" href="{% url 'supervisado' %}">Supervisado</a></li>
+  <li class="liheader"><a class="aheader" href="{% url 'noSupervisado' %}">No Supervisado</a></li>
+</ul>
+
+</html>

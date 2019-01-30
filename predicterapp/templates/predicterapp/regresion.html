@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang ="es">
+<link rel="stylesheet" href="{% static 'predicterapp/body.css' %}">
+<div class="basic">
+{% include "predicterapp/header.html" %}    
+</div>
+
+<div class="formularioDiv">
+<form action="/predicterapp/regresion/formulario" method="get" class="formulario">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Calcular">
+</form>
+</div>
+
+<div class="divfooter">
+{% include "predicterapp/footer.html" %}
+</div>
+</html>
+
+

@@ -1,0 +1,46 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang ="es">
+<link rel="stylesheet" href="{% static 'predicterapp/body.css' %}">
+{% load humanize %}
+
+<div class="basic">
+{% include "predicterapp/header.html" %}    
+</div>
+
+{% if BBDD %}
+	{% for nombre, valoresNaNArray, valorMinimoArray, valorMaximoArray, valorMedioArray, valorMinimoDataframe, valorMaximoDataframe, valorMedioDataframe, valoresNaNDataframe in BBDD %}
+	
+        <div>
+		<fieldset class="contenedorArray">
+			<legend>{{nombre}}:</legend>
+
+			<fieldset class="contenido">
+			<legend>Sin preprocesamiento:</legend>
+				<p><a>Valores NaN: {{valoresNaNDataframe}}</a><p/>
+				<p><a>Valor maximo: {{valorMaximoDataframe|floatformat:"3"|intcomma}}</a><p/>
+				<p><a>Valor minimo: {{valorMinimoDataframe|floatformat:"3"|intcomma}}</a><p/>
+				<p><a>Valor medio: {{valorMedioDataframe|floatformat:"3"|intcomma}}</a><p/>
+			</fieldset>
+
+			<fieldset class="contenido">
+			<legend>Con preprocesamiento:</legend>
+				<p><a>Valores NaN: {{valoresNaNArray}}</a><p/>
+				<p><a>Valor maximo: {{valorMaximoArray|floatformat:"3"|intcomma}}</a><p/>
+				<p><a>Valor minimo: {{valorMinimoArray|floatformat:"3"|intcomma}}</a><p/>
+				<p><a>Valor medio: {{valorMedioArray|floatformat:"3"|intcomma }}</a><p/>
+			</fieldset>
+		</fieldset>
+		</div>
+        
+    {% endfor %}
+{% else %}
+    <p>No hay datos.</p>
+{% endif %}
+
+<div class="divfooter">
+{% include "predicterapp/footer.html" %}
+</div>
+</html>
+

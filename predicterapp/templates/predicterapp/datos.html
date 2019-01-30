@@ -1,0 +1,38 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang ="es">
+<link rel="stylesheet" href="{% static 'predicterapp/body.css' %}">
+
+<div class="basic">
+{% include "predicterapp/header.html" %}    
+</div>
+
+<h1>DATOS EN LA BBDD</h1>
+
+{% if BBDD %}
+	<table id='tablaDatosBBDD'>
+		<tr>
+    		<th>Nombre</th>
+    		<th>Fecha Inicio</th>
+    		<th>Fecha Fin</th>
+    		<th>Instancias</th>
+  		</tr>
+	{% for nombre, fechaInicio, fechaFin, tam in BBDD %}
+        <tr>
+    		<td>{{nombre}}</td>
+    		<td>{{fechaInicio}}</td>
+    		<td>{{fechaFin}}</td>
+    		<td>{{tam}}</td>
+  		</tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No hay datos.</p>
+{% endif %}
+
+
+<div class="divfooter">
+{% include "predicterapp/footer.html" %}
+</div>
+</html>
